@@ -1,3 +1,16 @@
-<section *ngFor = "let item of nameList">
+
+<section class="selections m-3">
+  <h5>Order names: </h5>
+  <div class="btn-group btn-group-toggle" data-toggle="buttons">
+    <label class="btn btn-secondary active">
+        <input type="radio" [(ngModel)]="orderOfNames" name="options" id="option1" value="amount"> By amount
+    </label>
+    <label class="btn btn-secondary ml-2">
+        <input type="radio" [(ngModel)]="orderOfNames" name="options" id="option2" value="name"> Alphabetically
+    </label>
+</div>
+</section>
+
+<section *ngFor = "let item of nameList |sort:[orderOfNames] ">
   <app-name [data] = "item"></app-name>
 </section>

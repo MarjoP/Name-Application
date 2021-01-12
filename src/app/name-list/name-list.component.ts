@@ -9,6 +9,8 @@ import Names from '../Data/names.json';
 export class NameListComponent implements OnInit {
 
   nameList: [] = Names.names;
+  orderOfNames = "amount";
+  direction = 1;
 
   constructor() { }
 
