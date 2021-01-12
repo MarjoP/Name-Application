@@ -6,21 +6,23 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class SortPipe implements PipeTransform {
 
-  transform(array: Array<string>, value: string): any {
-
+  transform(array: Array<string>, value: any []): any {
+    var sortBy = value[0]
     var multiplier =1;
-    if(value == 'name'){
+
+    if(sortBy == 'name'){
       multiplier =-1;
     }
+    var order =value[1];
 
    array.sort((a:any, b:any) => {
-     if(a[value] < b[value])
+     if(a[sortBy] < b[sortBy])
      {
-      return 1*multiplier;
+      return 1*multiplier*order;
      }
-     else if(b[value] < a[value])
+     else if(b[sortBy] < a[sortBy])
      {
-       return -1*multiplier;
+       return -1*multiplier*order;
      }
      else {
        return 0;

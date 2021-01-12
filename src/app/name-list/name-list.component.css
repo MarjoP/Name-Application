@@ -6,3 +6,13 @@
 .btn.btn-secondary.active {
   background-color:#FA2C3E !important;
 }
+
+.changeDirection{
+  width:50px;
+}
+
+.headers >* {
+  color:darkblue;
+  text-decoration: underline;
+
+}

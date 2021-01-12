@@ -1,5 +1,5 @@
 
-<section class="selections m-3">
+<section class="selections m-3 ml-5">
   <h5>Order names: </h5>
   <div class="btn-group btn-group-toggle" data-toggle="buttons">
     <label class="btn btn-secondary active">
@@ -8,9 +8,18 @@
     <label class="btn btn-secondary ml-2">
         <input type="radio" [(ngModel)]="orderOfNames" name="options" id="option2" value="name"> Alphabetically
     </label>
-</div>
+  </div>
+    <button class="ml-4 changeDirection" (click)="reverseOrder()">
+      <fa-icon class="fa-2x" [icon] = "faSort"></fa-icon>
+  </button>
+
+  
 </section>
 
-<section *ngFor = "let item of nameList |sort:[orderOfNames] ">
+<section class="ml-5 headers">
+  <app-name [data]="{'name':'Name', 'amount':'Amount'}"></app-name>
+</section>
+
+<section class="ml-5" *ngFor = "let item of nameList |sort:[orderOfNames, direction] ">
   <app-name [data] = "item"></app-name>
 </section>

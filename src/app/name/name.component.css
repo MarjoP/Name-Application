@@ -1,3 +1,6 @@
-.btn-group-toggle {
-
+.name {
+  max-width:200px;
+}
+.amount{
+  max-width:100px;
 }

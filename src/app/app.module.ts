@@ -7,6 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { NameListComponent } from './name-list/name-list.component';
 import { HeaderComponent } from './header/header.component';
 import { SortPipe } from './pipes/sort.pipe';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { SortPipe } from './pipes/sort.pipe';
   imports: [
     BrowserModule,
     FormsModule,
+    FontAwesomeModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
