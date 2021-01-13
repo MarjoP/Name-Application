@@ -10,17 +10,17 @@
           <input type="radio" [(ngModel)]="orderOfNames" name="options" id="option2" value="name"> Alphabetically
       </label>
     </div>
-    <button class="ml-4 changeDirection" (click)="reverseOrder()">
+    <button class="ml-3 changeDirection" (click)="reverseOrder()">
       <fa-icon class="" [icon] = "faSort"></fa-icon>
     </button>
   </section>
 
-  <section class="search  ml-5">
+  <section class="search">
     <h5>Search name:</h5>
     <input class="m-3" type ="text" class="form-control input" [(ngModel)]="searched">
   </section>
 
-  <section class="searchResult ml-3">
+  <section class="searchResult">
     <p class="result">Total amount of names is <b>{{sumOfNames()}}</b>.</p>
     <p *ngIf="amountOfSearched()!=-1" class="result">Found <b>{{amountOfSearched()}}</b> persons with the name '{{searched}}'.</p>
   </section>
@@ -31,6 +31,6 @@
   <app-name [data]="{'name':'Name', 'amount':'Amount'}"></app-name>
 </section>
 
-<section class="ml-5" *ngFor = "let item of nameList |sort:[orderOfNames, direction]" >
+<section class="ml-5 nameList" *ngFor = "let item of nameList |sort:[orderOfNames, direction]" >
   <app-name [data] = "item" [ngStyle]="{color:highlight(item.name)}"></app-name>
 </section>
