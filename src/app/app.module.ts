@@ -15,7 +15,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     NameComponent,
     NameListComponent,
     HeaderComponent,
-    SortPipe
+    SortPipe,
+
   ],
   imports: [
     BrowserModule,

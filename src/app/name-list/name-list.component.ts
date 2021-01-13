@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { faSort, faSortAlphaUpAlt } from '@fortawesome/free-solid-svg-icons';
+import { zip } from 'rxjs';
 import Names from '../Data/names.json';
 
 
@@ -10,10 +11,12 @@ import Names from '../Data/names.json';
 })
 export class NameListComponent implements OnInit {
 
-  nameList: [] = Names.names;
+  nameList: [{name:string, amount:number}] = Names.names;
   orderOfNames = "amount";
   direction = 1;
   faSort = faSort;
+  searched="";
+  totalAmount=0;
 
   constructor() { }
 
@@ -21,8 +24,33 @@ export class NameListComponent implements OnInit {
     this.direction = this.direction*-1;
   }
 
-
   ngOnInit(): void {
   }
 
-}
+  sumOfNames() {
+    var qty=0;
+    this.nameList.forEach((element) => {
+      qty += element.amount;
+    })
+    return qty;
+  }
+
+  amountOfSearched() {
+    if(this.searched != ""){
+      let obj = this.nameList.find(z => z.name.toUpperCase() == this.searched.toUpperCase())
+      if(obj == null) {
+        return 0;
+      } else {
+        return obj.amount;
+      }
+    }
+    return -1;
+  }
+
+  highlight(name) {
+    return name.toUpperCase() === this.searched.toUpperCase() ? 'red' : '';
+    }
+  }
+
+
+

@@ -1,25 +1,36 @@
 
-<section class="selections m-3 ml-5">
-  <h5>Order names: </h5>
-  <div class="btn-group btn-group-toggle" data-toggle="buttons">
-    <label class="btn btn-secondary active">
-        <input type="radio" [(ngModel)]="orderOfNames" name="options" id="option1" value="amount"> By amount
-    </label>
-    <label class="btn btn-secondary ml-2">
-        <input type="radio" [(ngModel)]="orderOfNames" name="options" id="option2" value="name"> Alphabetically
-    </label>
-  </div>
+<section class="selections m-5">
+  <section class="sort">
+    <h5>Order names: </h5>
+    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+      <label class="btn btn-secondary active">
+          <input type="radio" [(ngModel)]="orderOfNames" name="options" id="option1" value="amount"> By amount
+      </label>
+      <label class="btn btn-secondary ml-2">
+          <input type="radio" [(ngModel)]="orderOfNames" name="options" id="option2" value="name"> Alphabetically
+      </label>
+    </div>
     <button class="ml-4 changeDirection" (click)="reverseOrder()">
-      <fa-icon class="fa-2x" [icon] = "faSort"></fa-icon>
-  </button>
+      <fa-icon class="" [icon] = "faSort"></fa-icon>
+    </button>
+  </section>
 
-  
+  <section class="search  ml-5">
+    <h5>Search name:</h5>
+    <input class="m-3" type ="text" class="form-control input" [(ngModel)]="searched">
+  </section>
+
+  <section class="searchResult ml-3">
+    <p class="result">Total amount of names is <b>{{sumOfNames()}}</b>.</p>
+    <p *ngIf="amountOfSearched()!=-1" class="result">Found <b>{{amountOfSearched()}}</b> persons with the name '{{searched}}'.</p>
+  </section>
+
 </section>
 
-<section class="ml-5 headers">
+<section class="ml-5 mb-2 headers">
   <app-name [data]="{'name':'Name', 'amount':'Amount'}"></app-name>
 </section>
 
-<section class="ml-5" *ngFor = "let item of nameList |sort:[orderOfNames, direction] ">
-  <app-name [data] = "item"></app-name>
+<section class="ml-5" *ngFor = "let item of nameList |sort:[orderOfNames, direction]" >
+  <app-name [data] = "item" [ngStyle]="{color:highlight(item.name)}"></app-name>
 </section>
